@@ -1,16 +1,20 @@
 //Base class for all objects
 class AnimalKingdom {
-    constructor(name, reproductionStatus, feeding, cellStatus, senseOrgans) {
+    constructor(name) {
       this.name = name;
-      this.reproductionStatus = `Sexual Reprduction`;
-      this.feeding = `Heterotroph`;
-      this.cellStatus = `Multicellular eukaryotes`;
-      this.senseOrgans = `eyes`;
-  
+    
       if (this.constructor == AnimalKingdom) {
         throw new Error("AnimalKingdom cannot be Instantiated");
       }
+
+
     }
+
+    reproductionStatus = `Sexual Reprduction`;
+    feeding = `Heterotroph`;
+    cellStatus = `Multicellular eukaryotes`;
+    senseOrgans = `eyes`;
+
     //A Protected class
     #eat() {
       console.log(`I am a ${this.feeding}.`);
@@ -31,17 +35,15 @@ class AnimalKingdom {
   var listOfAnimalclass = [];
   //Sub class Invertebrates
   class Invertebrates extends AnimalKingdom {
-    name = "Invertebrates";
     listOfAnimalclass = ["Arthropoda"];
   }
   //Sub class Vertebrates
   class Vertebrates extends AnimalKingdom {
-    name = "vertebrates";
     listOfAnimalclass = ["Fish, Amphibia, Reptiles, Aves, Mammals."];
   }
   
-  const invertebrates = new Invertebrates();
-  const vertebrates = new Vertebrates();
+  const invertebrates = new Invertebrates("Invertebrates");
+  const vertebrates = new Vertebrates("vertebrates");
   
   console.log(invertebrates);
   console.log(vertebrates);
@@ -50,18 +52,16 @@ class AnimalKingdom {
   
   class WarmBlooded extends Vertebrates {
     //overide name in super class
-    name = "Warm Blooded";
     listOfAnimalclass = ["Aves, Mammals"];
   }
   
   class ColdBlooded extends Invertebrates {
-    name = "Cold Blooded";
     listOfAnimalclass = ["Arthropoda"];
   }
   
-  const warmBlooded = new WarmBlooded();
+  const warmBlooded = new WarmBlooded("Warm Blooded");
   
-  const coldBlooded = new ColdBlooded();
+  const coldBlooded = new ColdBlooded("Cold Blooded");
   
   console.log(coldBlooded);
   console.log(warmBlooded);
